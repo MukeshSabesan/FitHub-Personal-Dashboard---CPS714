@@ -39,13 +39,14 @@ html, body, #root {
 
 .goals-container {
   position: fixed;
-  bottom: 100px;
+  bottom: 380px;
   right: 50px;
   z-index: 1000;
   background: white;
   padding: 16px;
   border-radius: 12px;
-  width: 500px;
+  width: 1000px;
+  height: auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -100,6 +101,16 @@ html, body, #root {
   cursor: pointer;
 }
 
+.upcoming-container{
+   bottom: 150px;
+   left: 50px;
+   height: auto;
+}
+
 .details:hover {
   text-decoration: underline;
+}
+
+.list-group-item input[type="checkbox"] {
+  margin-right: 30px;
 }
