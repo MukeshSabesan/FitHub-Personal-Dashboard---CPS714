@@ -19,7 +19,7 @@ function UserAccount(){
         </div>
         <div className="userinfo">
             <h5 className="username">Welcome {usernames[0]}</h5>
-            <p className="details">View Account Details</p> {/* this will eventually have to be a button that goes to the profile details page */}
+            <a href="MembershipDetails.tsx" className="details">View Account Details</a> {/* this will eventually have to be a button that goes to the profile details page */}
         </div>
         </>
     );
