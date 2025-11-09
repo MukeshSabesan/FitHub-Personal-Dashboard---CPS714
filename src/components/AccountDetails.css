@@ -1,30 +1,162 @@
-.account-details-container {
+/* ---------- Top-Level Container ---------- */
+/*
+    Children: * Page-Header
+                > Fithub-Logo
+                > Usercard
+                  > Card2 (declared in .tsx)
+                  > User-Info
+                    > Username
+                      > Details2
+                        > Details2: Hover
+              * Account-Details-Container
+                > Profile-Section
+                  > Profile-Pic
+                  > Change-Pic
+                > Info-Section
+                  > Info-Container
+                    > Info-Row
+                      > Info-Label
+                      > Info-Input
+                  > Save-and-Upgrade-Container
+                    > Upgrade-Btn
+                    > Save-Btn
+*/
+.profile-editor { /* Contains: Page-Header and Account-Details-Container */
   background-color: #d9ecff;
   width: 80%;
-  margin: 40px auto;
+  margin: 20px auto;
   border-radius: 10px;
-  padding: 30px;
+  padding: 20px;
   font-family: "Arial", sans-serif;
-}
 
-.account-header {
-  display: flex;
-  justify-content: space-between;
+  display: block;
   align-items: center;
+  justify-content: center;
 }
 
-.back-button {
-  background-color: #084c9e;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
+/*---------- Page-Header ----------*/
+/* 
+    Parent: Profile-Editor (Top-Level Container)
+
+    Children: * Fithub-Logo
+              * Usercard
+                > Card2 (declared in .tsx)
+                > User-Info
+                  > Username
+                    > Details2
+                      > Details2: Hover
+*/
+.page-header {
+  background-color: #3a7bd5;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px auto;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  gap: 10%;
 }
+
+.fithub-logo{
+  background: white;
+  padding: 10px;
+  border-radius: 12px;
+  width: 200px;
+  height: auto;
+  gap: 20px;
+}
+
+.usercard {
+  width: 60%;
+  background-color: #335d97;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 5px auto;
+  display: flex;
+  align-items: right;
+  gap: 20px;
+}
+
+.card2 {
+  background-color: #3a7bd5;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 10px;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+
+.user-info {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+}
+
+.username {
+  width: 80%;
+  color: white;
+  margin: 0;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.details2 {
+  color: white;
+  margin: 2px 0 0 0;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0;
+}
+
+.details2:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+
+/* ---------- Account-Details-Container ---------- */
+/* 
+    Parent: Profile-Editor
+    Children: * Profile-Section
+              * Info-Section
+*/
+.account-details-container {
+  background-color: #d9ecff;
+  width: 100%;
+  margin: 20px auto;
+  border-radius: 10px;
+  padding: 20px;
+  font-family: "Arial", sans-serif;
+
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Profile-Section ---------- */
+/* 
+    Parent: Account-Details-Container
+    Children: * Profile-Pic
+              * Change-Pic
+*/
 
 .profile-section {
+  width: 60%;
+  background-color: #3a7bd5;
   text-align: center;
-  margin-top: 20px;
+  margin: 20px auto;
+  border-radius: 8px;
+  padding: 20px;
+  display: block;
 }
 
 .profile-pic {
@@ -34,106 +166,109 @@
 }
 
 .change-pic {
+  max-width: 240px;
   color: #ffffff;
-  background-color: #3a7bd5;
-  display: inline-block;
+  background-color: #335d97;
+  display: block;
   padding: 5px 10px;
+  border: 1px solid #335d97;
   border-radius: 6px;
-  margin-top: 8px;
-  left: 100px;
+  margin: 10px auto;
   cursor: pointer;
 }
 
+
+
+/* ---------- Info-Section ---------- */
+/* 
+    Parent: Account-Details-Container
+    Children: * Info-Container
+                > Info-Row
+                  > Info-Label
+                  > Info-Input
+              * Save-and-Upgrade Container
+                > Upgrade-Btn
+                > Save-Btn
+              
+*/
 .info-section {
+  width: 60%;
   background-color: #3a7bd5;
   color: white;
-  margin-top: 30px;
+  margin: 20px auto;
   border-radius: 8px;
-  padding: 20px;
+  padding: 10px;
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-container{
+  width: 95%;
+  background-color: #335d97;
+  color: white;
+  margin: 20px auto;
+  border-radius: 8px;
+  padding: 5px;
+  display: block;
+  align-items: center;
+  justify-content: center;
 }
 
 .info-row {
+  width: 80%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  justify-content: space-between;
+  margin: 10px auto;
+  margin-right: 20px;
 }
 
 .info-label {
-  width: 40%;
+  width: 80%;
   font-weight: bold;
 }
 
 .info-input {
-  width: 50%;
+  width: 80%;
   padding: 5px;
   border: none;
   border-radius: 4px;
 }
 
+
+/* --- Save-and-Upgrade Container --- */
+.save-and-upgrade-container {
+  background-color: #335d97;
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px auto;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  gap: 5px;
+  font-family: "Arial", sans-serif;
+}
+
 .upgrade-btn {
+  width: 50%;
   background-color: #fff;
   color: #084c9e;
   border: 1px solid #084c9e;
-  padding: 8px 16px;
+  padding: 4px 8px;
   border-radius: 5px;
   cursor: pointer;
 }
 
-/* Match the UserAccount styling */
-.useraccount-container {
-  background: white;
-  padding: 12px 20px;
-  border-radius: 12px;
-  width: 300px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-  display: flex;
-  align-items: center;
-  justify-content: baseline;
-  margin: 20px auto;
-}
-
-.user-card {
-  display: flex;
-  align-items: start;
-  gap: 30px;
-  width: 100%;
-  background: transparent;
-}
-
-.user-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.username {
-  margin: 0;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.details {
-  margin: 2px 0 0 0;
-  font-size: 0.9rem;
-  color: #007bff;
-  cursor: pointer;
-  background: none;
-  border: none;
-  text-align: left;
-  padding: 0;
-}
-
-.details:hover {
-  text-decoration: underline;
-}
-
 .save-btn {
+  width: 50%;
   background-color: #fff;
   color: #084c9e;
   border: 1px solid #084c9e;
-  padding: 8px 16px;
+  padding: 4px 8px;
   border-radius: 5px;
   cursor: pointer;
 }
