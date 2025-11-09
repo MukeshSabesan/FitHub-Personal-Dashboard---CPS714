@@ -1,4 +1,6 @@
+import { useNavigate } from "react-router-dom";
 function UserAccount(){
+    const navigate = useNavigate();
     const usernames = [     /* we will eventually have to change this so it pulls usernames from a database*/
             'johndoe',
             'johnnyboy',
@@ -17,10 +19,15 @@ function UserAccount(){
             />
             
         </div>
-        <div className="userinfo">
-            <h5 className="username">Welcome {usernames[0]}</h5>
-            <p className="details">View Account Details</p> {/* this will eventually have to be a button that goes to the profile details page */}
-        </div>
+         <div className="userinfo">
+                <h5 className="username">Welcome {usernames[0]}</h5>
+                <button
+                    className="details"
+                    onClick={() => navigate("/account-details")}
+                >
+                    View Account Details
+                </button>
+         </div>
         </>
     );
 }
