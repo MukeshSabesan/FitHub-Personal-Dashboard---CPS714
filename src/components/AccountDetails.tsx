@@ -71,12 +71,24 @@ function AccountDetails() {
               <label className="info-label">
                 {field.charAt(0).toUpperCase() + field.slice(1)}
               </label>
+              {field === "membership" ? (
+              <select
+                value={value}
+                onChange={(e) => handleChange(field, e.target.value)}
+                className="info-input"
+              >
+                <option value="Silver">Silver</option>
+                <option value="Gold">Gold</option>
+                <option value="Platinum">Platinum</option>
+              </select>
+            ) : (
               <input
                 type="text"
                 value={value}
                 onChange={(e) => handleChange(field, e.target.value)}
                 className="info-input"
               />
+            )}
           </div>
         ))}
         </div>

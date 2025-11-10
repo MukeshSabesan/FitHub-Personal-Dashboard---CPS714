@@ -9,18 +9,18 @@ function UserAccount(){
         ];
     return( 
         <>
-        <div className="card">
-            <img
-                src="/photos/defaultprofilepic.png"
-                alt="Profile"
-                className="rounded-circle mb-2"
-                width="40"
-                height="40"
-            />
-            
+        <div className="profile-card">
+        <img
+            src="/photos/defaultprofilepic.png"
+            alt="Profile"
+            className="rounded-circle mb-2"
+            width="50"
+            height="50"
+        />
         </div>
+
          <div className="userinfo">
-                <h5 className="username">Welcome {usernames[0]}</h5>
+                <h5 className="main-page-username">Welcome {usernames[0]}</h5>
                 <button
                     className="details"
                     onClick={() => navigate("/account-details")}
