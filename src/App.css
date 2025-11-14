@@ -1,150 +1,147 @@
-/* Make sure the background fills the full screen */
+/* Allow natural page scaling */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #4682be;
+  font-family: Arial, sans-serif;
+}
 
-.upcoming-container {
-  position: absolute;
-  bottom: 95px;
-  left: 16px;
-  z-index: 1000;
+/* ------------------- GENERAL RESPONSIVE CARD STYLE ------------------- */
+.card-box {
   background: white;
   padding: 16px;
   border-radius: 12px;
-  width: 500px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.fithub-logo{
+/* ------------------- LOGO (TOP LEFT) ------------------- */
+.fithub-logo {
   position: fixed;
-  top: 20px;
-  left: 50px;
-  z-index: 1000;
+  top: 2vh;
+  left: 2vw;
 
-  background: white;
-  padding: 6px;
-  border-radius: 12px;
-  width: 200px;
-  height: auto;
-  gap: 20px;
+  width: 18vw;
+  min-width: 120px;
+  max-width: 200px;
 
   display: flex;
-  align-items: center; /* center content vertically */
+  align-items: center;
   justify-content: center;
-}
+  padding: 6px;
+  gap: 10px;
 
-
-.goals-container {
-  position: fixed;
-  bottom: 170px;
-  right: 70px;
-  z-index: 1000;
   background: white;
-  padding: 16px;
   border-radius: 12px;
-  width: 1000px;
-  height: 500px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
-/* Main fixed container */
+/* ------------------- USER ACCOUNT CARD (TOP RIGHT) ------------------- */
 .useraccount-container {
   position: fixed;
-  top: 20px;
-  right: 50px;
-  z-index: 1000;
+  top: 2vh;
+  right: 2vw;
+
+  width: 22vw;
+  min-width: 200px;
+  max-width: 300px;
+
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
 
   background: white;
-  padding: 12px 20px;
   border-radius: 12px;
-  width: 300px;
-  height: auto;
-  gap: 20px;
-
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-  display: flex;
-  align-items: center; /* center content vertically */
-  justify-content: baseline;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 1000;
 }
 
-/* Inner card for content layout */
-.user-card {
-  display: flex;
-  align-items: start;
-  gap: 30px;
-  width: 100%;
-  background: none;
-  border: none;
-  box-shadow: none;
+/* Username details layout */
+.user-card { display: flex; align-items: start; gap: 20px; }
+.user-info { display: flex; flex-direction: column; }
+.main-page-username { padding-left:10; margin: 0; font-size: 1rem; font-weight: 600; }
+.details { background-color: white; color: #007bff; font-size: 0.9rem; margin-top: 2px; cursor: pointer;  border: none;}
+.details:hover { text-decoration: underline; }
+
+/* ------------------- UPCOMING CLASSES (BOTTOM LEFT) ------------------- */
+.upcoming-container {
+  position: fixed;
+  bottom: 5vh;
+  left: 2vw;
+
+  width: 35vw;
+  min-width: 250px;
+  max-width: 450px;
+
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 1000;
 }
 
-/* Stack username above details */
-.user-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* Typography */
-.main-page-username {
-  margin: 0;
-  font-weight: 600;
-  font-size: 1rem;
-  color: black;
-  display: inline;
-}
-
-.details {
-  margin: 2px 0 0 0;
-  font-size: 0.9rem;
-  color: #007bff;
-  cursor: pointer;
-}
-
-.upcoming-container{
-   bottom: 150px;
-   left: 50px;
-   height: auto;
-}
-
-.details:hover {
-  text-decoration: underline;
-}
-
-.list-group-item input[type="checkbox"] {
-  margin-right: 30px;
-}
-
-.goals-list-container {
-  max-height: none;
-  overflow-y: visible;
-  margin-top: 10px;
-  margin-bottom: 20px; /* spacing between list and form */
-}
-
-/* Scrollable only when more than 8 items */
-.goals-list-container.scrollable {
-  max-height: 250px; /* adjust height based on your layout */
+/* Scrollable class list only when needed */
+.classes-list-container {
+  max-height: 40vh;
   overflow-y: auto;
-  padding-right: 10px;
+  padding-right: 8px;
+  align-items: center;
 }
-
-/* Optional scrollbar styling (just for this list) */
-.goals-list-container.scrollable::-webkit-scrollbar {
-  width: 8px;
-}
-
-.goals-list-container.scrollable::-webkit-scrollbar-thumb {
-  background-color: #3a7bd5;
+.classes-list-container::-webkit-scrollbar { width: 8px; }
+.classes-list-container::-webkit-scrollbar-thumb {
+  background: #3a7bd5;
   border-radius: 4px;
 }
 
-/* Add spacing and layout for the goal form */
-.add-goal-form {
+/* ------------------- GOALS PANEL (BOTTOM RIGHT) ------------------- */
+.goals-container {
+  position: fixed;
+  bottom: 5vh;
+  right: 2vw;
+
+  width: 45vw;
+  min-width: 300px;
+  max-width: 600px;
+  height: 55vh;
+
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 1000;
+
   display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
+  flex-direction: column;
 }
 
+/* Goals scrollable list */
+.goals-list-container {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 10px;
+  padding-right: 8px;
+}
+.goals-list-container::-webkit-scrollbar { width: 8px; }
+.goals-list-container::-webkit-scrollbar-thumb {
+  background: #3a7bd5;
+  border-radius: 4px;
+}
+
+.usage-btn-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;   /* centers the button */
+  margin-top: 20px;          /* spacing below membership details */
+}
+
+
+/* Goal input row */
+.add-goal-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
 .add-goal-form .form-control {
   flex: 1;
   padding: 6px;
@@ -156,38 +153,98 @@
   background-color: #3a7bd5;
   color: white;
   border: none;
-  border-radius: 6px;
   padding: 6px 12px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-/* Disable full page scroll */
-html, body #root{
-  overflow: hidden;
-  background-color: #4682be; /* change to any color you want */
+.cancel-class {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
-/* Scrollable class list container */
-.classes-list-container {
-  max-height: none;
-  overflow-y: visible;
-  margin-top: 10px;
+.view-classes-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
 }
 
-/* Activate scroll only when >5 classes */
-.classes-list-container.scrollable {
-  max-height: 220px;
-  overflow-y: auto;
-  padding-right: 10px;
+.usage-btn{
+   display: flex;
+  justify-content: center;   /* centers text horizontally */
+  align-items: center;        /* centers text vertically */
+  
+  background-color: white;  /* green */
+  color: #4682be;
+
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: center;
 }
 
-/* Optional scrollbar styling */
-.classes-list-container.scrollable::-webkit-scrollbar {
-  width: 8px;
+.view-class-btn {
+  display: flex;
+  justify-content: center;   /* centers text horizontally */
+  align-items: center;        /* centers text vertically */
+  
+  background-color: #28a745;  /* green */
+  color: white;
+  
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: center;
 }
 
-.classes-list-container.scrollable::-webkit-scrollbar-thumb {
-  background-color: #3a7bd5;
-  border-radius: 4px;
+.schedule-item {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  width: 100%;
+  gap: 10px;
 }
 
+.class-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;              /* makes left side expand */
+}
+
+
+/* ------------------- MOBILE OPTIMIZATION ------------------- */
+@media (max-width: 900px) {
+  .fithub-logo { width: 35vw; }
+  .useraccount-container { width: 40vw; }
+
+  .upcoming-container,
+  .goals-container {
+    position: static;
+    width: 90vw;
+    max-width: none;
+    height: auto;
+    margin: 20px auto;
+  }
+
+  body, html, #root {
+    overflow-y: auto; /* allow full scrolling on mobile */
+  }
+}
+
+@media (max-width: 600px) {
+  .fithub-logo,
+  .useraccount-container {
+    width: 70vw;
+  }
+
+  .card-box { padding: 12px; }
+}

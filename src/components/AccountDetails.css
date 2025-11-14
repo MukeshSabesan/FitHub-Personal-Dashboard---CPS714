@@ -1,275 +1,180 @@
-/* ---------- Top-Level Container ---------- */
-/*
-    Children: * Page-Header
-                > Fithub-Logo
-                > Usercard
-                  > Card2 (declared in .tsx)
-                  > User-Info
-                    > Username
-                      > Details2
-                        > Details2: Hover
-              * Account-Details-Container
-                > Profile-Section
-                  > Profile-Pic
-                  > Change-Pic
-                > Info-Section
-                  > Info-Container
-                    > Info-Row
-                      > Info-Label
-                      > Info-Input
-                  > Save-and-Upgrade-Container
-                    > Upgrade-Btn
-                    > Save-Btn
-*/
-.profile-editor { /* Contains: Page-Header and Account-Details-Container */
+/* ---------- Top-Level Profile Container ---------- */
+.profile-editor {
   background-color: #d9ecff;
-  width: 80%;
+  width: 95%;              /* wider */
+  max-width: 1500px;       /* full-width with safe max */
   margin: 20px auto;
   border-radius: 10px;
   padding: 20px;
   font-family: "Arial", sans-serif;
-
-  display: block;
-  align-items: center;
-  justify-content: center;
 }
 
-/*---------- Page-Header ----------*/
-/* 
-    Parent: Profile-Editor (Top-Level Container)
-
-    Children: * Fithub-Logo
-              * Usercard
-                > Card2 (declared in .tsx)
-                > User-Info
-                  > Username
-                    > Details2
-                      > Details2: Hover
-*/
+/* ---------- Page Header (Logo + User Card) ---------- */
 .page-header {
-  background-color: #3a7bd5;
-  width: 50%;
+  background-color:  #d9ecff;
+  width: 90%;
+  max-width: 1500px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin: 30px auto;
+  justify-content: center;   /* <-- center everything */
+  margin: 20px auto;
   border-radius: 10px;
   padding: 20px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  gap: 10%;
+  gap: 40px;
 }
 
-.fithub-logo{
-  background: white;
-  padding: 10px;
-  border-radius: 12px;
-  width: 200px;
-  height: auto;
-  gap: 20px;
-}
 
 .usercard {
-  width: 60%;
-  background-color: #335d97;
-  padding: 20px;
-  border-radius: 12px;
-  margin: 5px auto;
-  display: flex;
-  align-items: right;
-  gap: 20px;
-}
-
-.card2 {
+  width: 40%;               
   background-color: #3a7bd5;
-  padding: 5px;
-  margin: 5px;
-  border-radius: 10px;
-  display: block;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-}
+  padding: 12px 30px;
+  border-radius: 12px;
 
-.user-info {
-  width: 60%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;    /* stack items vertically */
+  align-items: center;       /* center horizontally */
+  justify-content: center;   /* center vertically */
+  gap: 12px;
+  text-align: center;
 }
 
-.username {
-  width: 80%;
-  color: white;
-  margin: 0;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.details2 {
-  color: white;
-  margin: 2px 0 0 0;
-  font-size: 0.9rem;
-  cursor: pointer;
-  background: none;
+.details2{
+  background-color: #3a7bd5;
   border: none;
-  text-align: left;
-  padding: 0;
+  color: white;
 }
+
 
 .details2:hover {
-  color: white;
   text-decoration: underline;
 }
 
+/* The small square behind the profile icon */
+.card2 {
+  background-color: #3a7bd5;
+  padding: 4px;
+  border-radius: 10px;
+  width: 45px;             /* smaller icon container */
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-/* ---------- Account-Details-Container ---------- */
-/* 
-    Parent: Profile-Editor
-    Children: * Profile-Section
-              * Info-Section
-*/
+.user-info {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* vertical centering inside the column */
+  align-items: center;       /* horizontal centering inside the parent */
+  text-align: center;        /* keeps text centered */
+}
+
+
+/* Make username text smaller */
+.username {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Make back button smaller and cleaner */
+.details2 {
+  font-size: 0.8rem;      /* smaller text */
+  margin-top: 2px;
+}
+
+/* ---------- Account Details Container ---------- */
 .account-details-container {
   background-color: #d9ecff;
-  width: 100%;
+  width: 95%;             /* wider */
+  max-width: 1500px;
   margin: 20px auto;
   border-radius: 10px;
   padding: 20px;
-  font-family: "Arial", sans-serif;
-
-  display: block;
-  align-items: center;
-  justify-content: center;
 }
 
-/* ---------- Profile-Section ---------- */
-/* 
-    Parent: Account-Details-Container
-    Children: * Profile-Pic
-              * Change-Pic
-*/
-
+/* ---------- Profile Section ---------- */
 .profile-section {
-  width: 60%;
+  width: 90%;             /* previously 60% */
+  max-width: 1200px;
   background-color: #3a7bd5;
   text-align: center;
   margin: 20px auto;
   border-radius: 8px;
   padding: 20px;
-  display: block;
 }
 
-.profile-pic {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-}
-
-.change-pic {
-  max-width: 240px;
-  color: #ffffff;
-  background-color: #335d97;
-  display: block;
-  padding: 5px 10px;
-  border: 1px solid #335d97;
-  border-radius: 6px;
-  margin: 10px auto;
-  cursor: pointer;
-}
-
-
-
-/* ---------- Info-Section ---------- */
-/* 
-    Parent: Account-Details-Container
-    Children: * Info-Container
-                > Info-Row
-                  > Info-Label
-                  > Info-Input
-              * Save-and-Upgrade Container
-                > Upgrade-Btn
-                > Save-Btn
-              
-*/
+/* ---------- Info Section (Inputs) ---------- */
 .info-section {
-  width: 60%;
+  width: 90%;             /* previously 60% */
+  max-width: 1200px;
   background-color: #3a7bd5;
   color: white;
   margin: 20px auto;
   border-radius: 8px;
-  padding: 10px;
-  display: block;
-  align-items: center;
-  justify-content: center;
+  padding: 20px;
 }
 
-.info-container{
-  width: 95%;
+/* ---------- Info Container ---------- */
+.info-container {
+  width: 98%;             /* previously 95% */
   background-color: #335d97;
-  color: white;
-  margin: 20px auto;
   border-radius: 8px;
-  padding: 5px;
-  display: block;
-  align-items: center;
-  justify-content: center;
+  margin: 20px auto;
+  padding: 10px;
 }
 
+/* ---------- Individual Rows ---------- */
 .info-row {
-  width: 80%;
+  width: 95%;             /* wider */
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin: 10px auto;
-  margin-right: 20px;
+  margin: 12px auto;
 }
 
 .info-label {
-  width: 80%;
+  width: 40%;
   font-weight: bold;
 }
 
 .info-input {
-  width: 80%;
-  padding: 5px;
-  border: none;
+  width: 55%;             /* expands input boxes */
+  padding: 6px 10px;
   border-radius: 4px;
+  border: none;
 }
 
-
-/* --- Save-and-Upgrade Container --- */
+/* ---------- Save + Upgrade Container ---------- */
 .save-and-upgrade-container {
+  width: 98%;             /* wider */
   background-color: #335d97;
-  width: 95%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   margin: 30px auto;
   border-radius: 10px;
   padding: 10px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  gap: 5px;
-  font-family: "Arial", sans-serif;
 }
 
-.upgrade-btn {
-  width: 50%;
-  background-color: #fff;
-  color: #084c9e;
-  border: 1px solid #084c9e;
-  padding: 4px 8px;
+.upgrade-btn, .save-btn, .change-pic {
+  width: 48%;             /* symmetric wider buttons */
+  padding: 10px;
+  font-weight: bold;
   border-radius: 5px;
-  cursor: pointer;
+  border: 1px solid #084c9e;
+  color: #3a7bd5;
 }
 
-.save-btn {
-  width: 50%;
-  background-color: #fff;
-  color: #084c9e;
-  border: 1px solid #084c9e;
-  padding: 4px 8px;
-  border-radius: 5px;
-  cursor: pointer;
+.upgrade-btn:hover, .save-btn:hover, .change-pic:hover {
+  text-decoration: underline;
+}
+
+.profile-pic {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+  display: block;
 }
 

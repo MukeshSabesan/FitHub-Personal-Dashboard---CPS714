@@ -14,12 +14,20 @@ function UpcomingClasses() {
         <ul className="list-group">
           {schedule.map((item, index) => (
             <li key={index} className="list-group-item schedule-item">
+            <div className="class-info">
               <div className="schedule-date">{item.date}</div>
               <div className="schedule-class">{item.className}</div>
               <div className="schedule-instructor">Instructor: {item.instructor}</div>
-            </li>
+            </div>
+            <button type="submit" className="cancel-class">Cancel</button>
+          </li>
           ))}
         </ul>
+      </div>
+      <div className="view-classes-wrapper">
+        <button type="submit" className="view-class-btn">
+          View All Available Classes
+        </button>
       </div>
     </>
   );

@@ -20,6 +20,9 @@ function App(){
                         <div className="membership-details"><MembershipDetails /></div>
                         <div className="useraccount-container"><UserAccount /></div>
                         <div className="upcoming-container"><UpcomingClasses /></div>
+                        <div className="usage-btn-wrapper">
+                            <button className="usage-btn">View Facility and Equipment Usage</button> 
+                        </div>
                         </>
                     }
                 />
