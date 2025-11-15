@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { db } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
+
 
 function GoalsList() {
   const [goals, setGoals] = useState<string[]>([
@@ -10,6 +13,22 @@ function GoalsList() {
   ]);
 
   const [newGoal, setNewGoal] = useState("");
+
+
+
+   const handleAchievement = async (goal: string) => {
+    try {
+      await addDoc(collection(db, "achievements"), {
+        goal: goal,
+        completed: true,
+        completedAt: new Date(),
+      });
+      console.log("Achievement saved:", goal);
+    } catch (error) {
+      console.error("Error saving achievement:", error);
+    }
+  };
+
 
   const handleAddGoal = (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,7 +47,7 @@ function GoalsList() {
         <ul className="list-group">
           {goals.map((item, index) => (
             <li key={index} className="list-group-item">
-              <input type="checkbox" id={`goal-${index}`} className="mr-2" />
+              <input type="checkbox" id={`goal-${index}`} className="mr-2" onChange={() => handleAchievement(item)} />
               <label htmlFor={`goal-${index}`}>{item}</label>
             </li>
           ))}
