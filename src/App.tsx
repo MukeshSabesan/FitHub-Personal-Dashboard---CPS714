@@ -5,7 +5,6 @@ import FitHubLogo from "./components/FitHubLogo";
 import UpcomingClasses from "./components/UpcomingClasses";
 import AccountDetails from "./components/AccountDetails";
 import MembershipDetails from "./components/MembershipDetails";
-import Achievments from "./components/Achievments";
 import "./App.css";
 
 function App(){
@@ -21,7 +20,6 @@ function App(){
                         <div className="membership-details"><MembershipDetails /></div>
                         <div className="useraccount-container"><UserAccount /></div>
                         <div className="upcoming-container"><UpcomingClasses /></div>
-                         <div className="achievments-container"><Achievments /></div>
                         <div className="usage-btn-wrapper">
                             <button className="usage-btn">View Facility and Equipment Usage</button> 
                         </div>
