@@ -1,7 +1,7 @@
 function FitHubLogo(){
     return( 
         <>
-        <h3>FitHub</h3>
+        <img src="/Fithublogo2.png"></img>
         </>
     );
 }

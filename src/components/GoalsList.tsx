@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { db } from "../firebase";
+import { achievementsDB as db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
 
 

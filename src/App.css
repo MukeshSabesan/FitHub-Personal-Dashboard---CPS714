@@ -1,11 +1,17 @@
 /* Allow natural page scaling */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+*{
+  font-family: "Poppins", sans-serif;
+}
+
 html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-color: #4682be;
-  font-family: Arial, sans-serif;
+  background-color: #eeedeb;
 }
 
 /* ------------------- GENERAL RESPONSIVE CARD STYLE ------------------- */
@@ -16,26 +22,6 @@ html, body, #root {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* ------------------- LOGO (TOP LEFT) ------------------- */
-.fithub-logo {
-  position: fixed;
-  top: 2vh;
-  left: 2vw;
-
-  width: 18vw;
-  min-width: 120px;
-  max-width: 200px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px;
-  gap: 10px;
-
-  background: white;
-  border-radius: 12px;
-  z-index: 1000;
-}
 
 /* ------------------- USER ACCOUNT CARD (TOP RIGHT) ------------------- */
 .useraccount-container {
@@ -51,7 +37,7 @@ html, body, #root {
   align-items: center;
   padding: 12px 20px;
 
-  background: white;
+  background: #3a7bd5;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   z-index: 1000;
@@ -60,8 +46,8 @@ html, body, #root {
 /* Username details layout */
 .user-card { display: flex; align-items: start; gap: 20px; }
 .user-info { display: flex; flex-direction: column; }
-.main-page-username { padding-left:10; margin: 0; font-size: 1rem; font-weight: 600; }
-.details { background-color: white; color: #007bff; font-size: 0.9rem; margin-top: 2px; cursor: pointer;  border: none;}
+.main-page-username { padding-left:10px; margin: 0; font-size: 1rem; font-weight: 600; color: white;}
+.details { padding-left: 10px; background-color: #3a7bd5; color: white; font-size: 0.9rem; margin-top: 2px; cursor: pointer;  border: none;}
 .details:hover { text-decoration: underline; }
 
 /* ------------------- UPCOMING CLASSES (BOTTOM LEFT) ------------------- */
@@ -74,7 +60,8 @@ html, body, #root {
   min-width: 250px;
   max-width: 450px;
 
-  background: white;
+  background: #3a7bd5;
+  color: white;
   padding: 16px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -83,6 +70,7 @@ html, body, #root {
 
 /* Scrollable class list only when needed */
 .classes-list-container {
+  background-color: white;
   max-height: 40vh;
   overflow-y: auto;
   padding-right: 8px;
@@ -105,7 +93,8 @@ html, body, #root {
   max-width: 600px;
   height: 55vh;
 
-  background: white;
+  background: #3a7bd5;
+  color: white;
   padding: 16px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -124,7 +113,7 @@ html, body, #root {
 }
 .goals-list-container::-webkit-scrollbar { width: 8px; }
 .goals-list-container::-webkit-scrollbar-thumb {
-  background: #3a7bd5;
+  background: white;
   border-radius: 4px;
 }
 
@@ -150,8 +139,8 @@ html, body, #root {
 }
 
 .add-goal-btn {
-  background-color: #3a7bd5;
-  color: white;
+  background-color: white;
+  color: #3a7bd5;
   border: none;
   padding: 6px 12px;
   border-radius: 6px;
@@ -218,6 +207,12 @@ html, body, #root {
   display: flex;
   flex-direction: column;
   flex: 1;              /* makes left side expand */
+}
+
+.membership-details{
+   position: fixed;
+   top: 2vh;
+   left: 30vw;
 }
 
 
