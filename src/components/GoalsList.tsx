@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { achievementsDB as db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
-
+import { useUser } from "../context/UserContext";
 
 function GoalsList() {
   const [goals, setGoals] = useState<string[]>([
@@ -11,7 +11,7 @@ function GoalsList() {
     "Bench 225 lbs",
     "Do 8 pullups"
   ]);
-
+  const { user } = useUser();
   const [newGoal, setNewGoal] = useState("");
 
 
@@ -19,6 +19,8 @@ function GoalsList() {
    const handleAchievement = async (goal: string) => {
     try {
       await addDoc(collection(db, "achievements"), {
+        username: user?.username,
+        email: user?.email,
         goal: goal,
         completed: true,
         completedAt: new Date(),
