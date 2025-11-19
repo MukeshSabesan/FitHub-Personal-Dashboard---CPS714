@@ -1,22 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { db } from "../firebase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, onSnapshot, querySnapshotFromJSON, DocumentData, QuerySnapshot } from "firebase/firestore";
 
+type Goal = {
+  id: string;
+  text: string;
+}
 
 function GoalsList() {
-  const [goals, setGoals] = useState<string[]>([
-    "Attend 5 Kickboxing classes in a month",
-    "Go to the gym 4 times a week minimum",
-    "Cut 5 lbs in a month",
-    "Bench 225 lbs",
-    "Do 8 pullups"
-  ]);
-
+  const [goals, setGoals] = useState<Goal[]>([]);
+  
   const [newGoal, setNewGoal] = useState("");
 
+  useEffect(() => {
+    const goalsCollection = collection(db, "goals");
 
+    const unsubscribe = onSnapshot(goalsCollection, (snapshot: QuerySnapshot<DocumentData>) => {
+      const dbGoals: Goal[] = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        text: doc.data().text as string,
+      }));
+      setGoals(dbGoals);
+    });
 
-   const handleAchievement = async (goal: string) => {
+    return () => unsubscribe();
+  }, []);
+
+  const handleAchievement = async (goal: string) => {
     try {
       await addDoc(collection(db, "achievements"), {
         goal: goal,
@@ -30,11 +40,20 @@ function GoalsList() {
   };
 
 
-  const handleAddGoal = (e: React.FormEvent) => {
+ const handleAddGoal = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (newGoal.trim()) {
-      setGoals([...goals, newGoal]);
-      setNewGoal("");
+    const trimmed = newGoal.trim();
+    if (!trimmed) return;
+
+    try {
+      await addDoc(collection(db, "goals"), {
+        text: trimmed,
+        createdAt: new Date(),
+      });
+      setNewGoal("");// clear the input
+      //goals updating automatically 
+    } catch (error) {
+      console.error("Error adding goal:", error);
     }
   };
 
@@ -47,8 +66,8 @@ function GoalsList() {
         <ul className="list-group">
           {goals.map((item, index) => (
             <li key={index} className="list-group-item">
-              <input type="checkbox" id={`goal-${index}`} className="mr-2" onChange={() => handleAchievement(item)} />
-              <label htmlFor={`goal-${index}`}>{item}</label>
+              <input type="checkbox" id={`goal-${index}`} className="mr-2" onChange={() => handleAchievement(item.text)}/>
+               <label htmlFor={`goal-${item.id}`}>{item.text}</label>
             </li>
           ))}
         </ul>
