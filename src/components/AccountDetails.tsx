@@ -11,6 +11,7 @@ import { fithubDB } from "../firebase";
 function AccountDetails() {
   const navigate = useNavigate();
   const { user } = useUser();
+  const [profilePic, setProfilePic] = useState("/photos/defaultprofilepic.png");
 
   const [userData, setUserData] = useState({
     name: "",
@@ -36,7 +37,13 @@ function AccountDetails() {
   const handleChange = (field: string, value: string) => {
     setUserData(prev => ({ ...prev, [field]: value }));
   };
-
+    const handleProfileChange = (E: React.ChangeEvent<HTMLInputElement>) => {
+    const file = E.target.files?.[0];
+    if(file) {
+      const imageURL = URL.createObjectURL(file);
+      setProfilePic(imageURL)
+    }
+  }
   const handleSave = async () => {
   if (!user || !user.username) {
     console.error("No username found for the logged-in user.");
@@ -107,7 +114,7 @@ function AccountDetails() {
         <div className="usercard">
           <div className="card2">
             <img className="rounded-circle mb-2"
-              src="/photos/defaultprofilepic.png"
+              src={profilePic}
               alt="Profile"
               width={40}
               height={40}
@@ -127,9 +134,12 @@ function AccountDetails() {
       <div className="account-details-container">
         <div className="profile-section">
           <img className="profile-pic"
-            src="/photos/defaultprofilepic.png"
+            src={profilePic}
             alt="Profile" />
-          <button className="change-pic">Change profile picture</button>
+          <button className="change-pic" onClick={() => document.getElementById("profile")?.click()}>Change profile picture</button>
+
+          <input type="file" id="profile" accept="image/*" style={{ display: "none"}} onChange={handleProfileChange} />
+
         </div>
 
         <div className="info-section">
