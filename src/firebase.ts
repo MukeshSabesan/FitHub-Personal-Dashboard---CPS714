@@ -17,7 +17,6 @@ const firebaseConfigAchievements = {
   measurementId: "G-171MVYJ423"
 };
 
-// Initialize FIRST app
 const achievementsApp = initializeApp(firebaseConfigAchievements, "achievementsApp");
 export const achievementsDB = getFirestore(achievementsApp);
 
@@ -36,8 +35,6 @@ const fithubConfig = {
   measurementId: "G-LP9CWKTFDS"
 };
 
-// Initialize SECOND app with a NAME to avoid conflict
-const fithubApp = initializeApp(fithubConfig, "fithubApp");
 
-// Export database instance
+const fithubApp = initializeApp(fithubConfig, "fithubApp");
 export const fithubDB = getDatabase(fithubApp);

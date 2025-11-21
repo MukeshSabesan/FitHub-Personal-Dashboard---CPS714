@@ -145,18 +145,27 @@
   border: none;
 }
 
-/* ---------- Save + Upgrade Container ---------- */
 .save-and-upgrade-container {
-  width: 98%;             /* wider */
+  width: 98%;
   background-color: #335d97;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;   /* centers horizontally */
   margin: 30px auto;
   border-radius: 10px;
   padding: 10px;
 }
 
-.upgrade-btn, .save-btn, .change-pic {
+.save-btn {
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 1px solid #084c9e;
+  color: #3a7bd5;
+  margin: 0 auto;
+}
+
+
+.change-pic {
   width: 48%;             /* symmetric wider buttons */
   padding: 10px;
   font-weight: bold;

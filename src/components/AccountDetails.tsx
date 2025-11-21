@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import FitHubLogo from "./FitHubLogo";
 import { useUser } from "../context/UserContext";
 import "./AccountDetails.css";
+import { ref, update, get , set, remove} from "firebase/database";
+import { fithubDB } from "../firebase";
+
+
 
 function AccountDetails() {
   const navigate = useNavigate();
@@ -32,6 +36,68 @@ function AccountDetails() {
   const handleChange = (field: string, value: string) => {
     setUserData(prev => ({ ...prev, [field]: value }));
   };
+
+  const handleSave = async () => {
+  if (!user || !user.username) {
+    console.error("No username found for the logged-in user.");
+    return;
+  }
+
+  const oldUsername = user.username;
+  const newUsername = userData.username;
+
+  try {
+    // If username did NOT change, just update fields
+    if (oldUsername === newUsername) {
+      const userRef = ref(fithubDB, `users/${oldUsername}`);
+
+      await update(userRef, {
+        Name: userData.name,
+        username: newUsername,
+        email: userData.email,
+        phone: userData.phone,
+        membership: userData.membership
+      });
+
+      alert("Profile updated!");
+      return;
+    }
+
+    // Username CHANGED → migrate key
+    const oldRef = ref(fithubDB, `users/${oldUsername}`);
+    const newRef = ref(fithubDB, `users/${newUsername}`);
+
+    // 1. Read old data
+    const snap = await get(oldRef);
+    if (!snap.exists()) {
+      alert("Old user record not found.");
+      return;
+    }
+
+    const oldData = snap.val();
+
+    // 2. Create new key with updated data
+    await set(newRef, {
+      ...oldData,
+      Name: userData.name,
+      username: newUsername,
+      email: userData.email,
+      phone: userData.phone,
+      membership: userData.membership
+    });
+
+    // 3. Delete old key
+    await remove(oldRef);
+
+    alert("Username updated and moved successfully!");
+    
+  } catch (error) {
+    console.error("Error saving:", error);
+    alert("Failed to update profile.");
+  }
+};
+
+
 
   return (
     <div className="profile-editor">
@@ -97,8 +163,7 @@ function AccountDetails() {
           </div>
 
           <div className="save-and-upgrade-container">
-            <button className="upgrade-btn">Upgrade Membership</button>
-            <button className="save-btn">Save Profile Changes</button>
+            <button className="save-btn" onClick={handleSave}>Save Profile Changes</button>
           </div>
         </div>
       </div>
