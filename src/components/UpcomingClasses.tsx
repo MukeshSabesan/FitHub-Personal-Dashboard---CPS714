@@ -1,31 +1,89 @@
+import { useEffect, useState } from "react";
+import { ref, onValue, remove } from "firebase/database";
+import { fithubDB } from "../firebase";
+import { useUser } from "../context/UserContext";
+
 function UpcomingClasses() {
-  const schedule = [
-    { date: "Thursday Oct 2nd, 2–4pm", className: "Yoga Class", instructor: "Sai Yogesh" },
-    { date: "Friday Oct 10th, 5–6pm", className: "Intro to Kickboxing", instructor: "Alex Pereira" },
-    { date: "Wednesday Oct 11th, 5–6pm", className: "Zumba", instructor: "Alejandra Garcia" },
-    { date: "Monday Oct 20th, 4–7pm", className: "Basketball Tournament", instructor: "LeBron James" },
-    { date: "Friday Nov 1st, 2–4pm", className: "Mental Health & Fitness", instructor: "James David" },
-  ];
+  const { user } = useUser();
+  const [classes, setClasses] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (!user || !user.username) return;
+
+    const classesRef = ref(
+      fithubDB,
+      `users/${user.username}/upcomingclasses`
+    );
+
+    const unsubscribe = onValue(classesRef, (snapshot) => {
+      if (!snapshot.exists()) {
+        setClasses([]);
+        return;
+      }
+
+      const data = snapshot.val();
+
+      const list = Object.entries(data).map(
+        ([id, info]: [string, any]) => ({
+          id,
+          ...info,
+        })
+      );
+
+      setClasses(list);
+    });
+
+    return () => unsubscribe();
+  }, [user]);
+
+  const cancelClass = async (classId: string) => {
+    if (!user || !user.username) return;
+
+    const classRef = ref(
+      fithubDB,
+      `users/${user.username}/upcomingclasses/${classId}`
+    );
+
+    await remove(classRef);
+  };
 
   return (
     <>
       <h1>Upcoming Classes:</h1>
-      <div className={`classes-list-container ${schedule.length > 5 ? "scrollable" : ""}`}>
-        <ul className="list-group">
-          {schedule.map((item, index) => (
-            <li key={index} className="list-group-item schedule-item">
-            <div className="class-info">
-              <div className="schedule-date">{item.date}</div>
-              <div className="schedule-class">{item.className}</div>
-              <div className="schedule-instructor">Instructor: {item.instructor}</div>
-            </div>
-            <button type="submit" className="cancel-class">Cancel</button>
-          </li>
-          ))}
-        </ul>
-      </div>
+
+      {classes.length === 0 ? (
+        <p>You have no upcoming classes.</p>
+      ) : (
+        <div
+          className={`classes-list-container ${
+            classes.length > 5 ? "scrollable" : ""
+          }`}
+        >
+          <ul className="list-group">
+            {classes.map((cls) => (
+              <li key={cls.id} className="list-group-item schedule-item">
+                <div className="class-info">
+                  <div className="schedule-date">{cls.date}</div>
+                  <div className="schedule-class">{cls.name}</div>
+                  <div className="schedule-instructor">
+                    Instructor: {cls.instructor}
+                  </div>
+                </div>
+
+                <button
+                  className="cancel-class"
+                  onClick={() => cancelClass(cls.id)}
+                >
+                  Cancel
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <div className="view-classes-wrapper">
-        <button type="submit" className="view-class-btn">
+        <button className="view-class-btn">
           View All Available Classes
         </button>
       </div>

@@ -6,7 +6,7 @@ import UpcomingClasses from "./components/UpcomingClasses";
 import AccountDetails from "./components/AccountDetails";
 import MembershipDetails from "./components/MembershipDetails";
 import LoginPage from "./components/LoginPage";
-import { UserProvider } from "./context/UserContext";  // ✅ ADDED
+import { UserProvider } from "./context/UserContext";
 import "./App.css";
 
 function App(){
