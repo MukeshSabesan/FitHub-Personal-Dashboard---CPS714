@@ -44,7 +44,6 @@ function GoalsList() {
     <>
       <h1>Goals:</h1>
 
-      {/* This container will scroll ONLY when > 8 goals */}
       <div className={`goals-list-container ${goals.length > 8 ? "scrollable" : ""}`}>
         <ul className="list-group">
           {goals.map((item, index) => (
@@ -56,7 +55,6 @@ function GoalsList() {
         </ul>
       </div>
 
-      {/* Add spacing below list */}
       <form onSubmit={handleAddGoal} className="add-goal-form">
         <input
           type="text"

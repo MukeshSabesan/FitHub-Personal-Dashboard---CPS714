@@ -68,7 +68,7 @@ html, body, #root {
   z-index: 1000;
 }
 
-/* Scrollable class list only when needed */
+
 .classes-list-container {
   background-color: white;
   max-height: 40vh;
@@ -104,7 +104,7 @@ html, body, #root {
   flex-direction: column;
 }
 
-/* Goals scrollable list */
+
 .goals-list-container {
   flex: 1;
   overflow-y: auto;
@@ -120,8 +120,8 @@ html, body, #root {
 .usage-btn-wrapper {
   width: 100%;
   display: flex;
-  justify-content: center;   /* centers the button */
-  margin-top: 20px;          /* spacing below membership details */
+  justify-content: center;   
+  margin-top: 20px;        
 }
 
 
@@ -165,10 +165,10 @@ html, body, #root {
 
 .usage-btn{
    display: flex;
-  justify-content: center;   /* centers text horizontally */
-  align-items: center;        /* centers text vertically */
+  justify-content: center;   
+  align-items: center;        
   
-  background-color: white;  /* green */
+  background-color: white;  
   color: #4682be;
 
   padding: 8px 16px;
@@ -181,10 +181,10 @@ html, body, #root {
 
 .view-class-btn {
   display: flex;
-  justify-content: center;   /* centers text horizontally */
-  align-items: center;        /* centers text vertically */
+  justify-content: center;   
+  align-items: center;        
   
-  background-color: #28a745;  /* green */
+  background-color: #28a745;  
   color: white;
   
   padding: 8px 16px;
@@ -206,7 +206,7 @@ html, body, #root {
 .class-info {
   display: flex;
   flex-direction: column;
-  flex: 1;              /* makes left side expand */
+  flex: 1;              
 }
 
 .membership-details{
@@ -232,7 +232,7 @@ html, body, #root {
   }
 
   body, html, #root {
-    overflow-y: auto; /* allow full scrolling on mobile */
+    overflow-y: auto; 
   }
 }
 
